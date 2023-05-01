@@ -1,0 +1,40 @@
+<div class="card-section">
+    <app-title-section
+        [title]="team.full_name"
+        [abbreviation]="team.abbreviation"
+        [conference]="team.conference"
+        [hasClose]="true"
+        (closeCard)="closeEvent()"
+    ></app-title-section>
+    <div class="divider"></div>
+    <div class="result-section">
+        <div class="left-side">
+            <span>Results of past 12 days: </span>
+            <div class="result-displayer">
+                <span
+                    *ngFor="let result of ResultsList"
+                    [ngClass]="{
+                        'win': result === 'W',
+                        'lose': result === 'L'
+                    }"
+                > 
+                    {{ result }}
+                </span>
+            </div>
+            <div class="no-results" *ngIf="ResultsList?.length === 0">No results found</div>
+            <span>Avg. pts scored: {{ avgScored }}</span>
+            <span>Avg. pts conceded: {{ avgConceded }}</span>
+        </div>
+        <div class="right-side">
+            <img [src]="url" width="150" height="150" class="image-fit" alt="team logo">
+        </div>
+    </div>
+    <button
+      [id]="idButton"
+      type="button"
+      class="results-button"
+      (click)="navigateToPage()"
+    >
+      See game results >>
+    </button>
+</div>

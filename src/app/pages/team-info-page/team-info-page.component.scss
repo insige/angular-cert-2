@@ -1,0 +1,28 @@
+.subheader-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 12px;
+    justify-content: flex-start;
+
+    #teamSelect {
+        width: 200px;
+        padding: 8px;
+    }
+
+    #trackBtn {
+        padding: 12px;
+        background-color: #167ddd;
+        border: none;
+        color: white;
+    }
+}
+
+.card-section {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap;
+}

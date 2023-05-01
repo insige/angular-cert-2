@@ -1,0 +1,16 @@
+<div class="title-section">
+    <div class="left-side-section">
+        <span class="title">{{title}} [{{abbreviation}}]</span>
+        <span>{{ conference }} conference</span>
+    </div>
+    
+    <button
+      [id]="idCross"
+      type="button"
+      class="cross"
+      *ngIf="hasClose"
+      (click)="closeEvent()"
+    >
+       X
+    </button>
+</div>

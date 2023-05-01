@@ -1,0 +1,41 @@
+.card-section {
+    width: 400px;
+    border: 1px solid black;
+    padding: 8px;
+
+    #backButton {
+        width: 100%;
+        padding: 12px;
+        background-color: green;
+        color: white;
+        border: none;
+    }
+}
+
+.divider {
+    border-bottom: 1px solid black;
+    width: 100%;
+    margin: 12px 0;
+}
+
+.result-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    span {
+        margin-top: 12px;
+        font-size: 14px;
+    }
+
+    .result {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        margin-bottom: 12px;
+
+        .abbreviation {
+            font-weight: 600;
+        }
+    }
+}

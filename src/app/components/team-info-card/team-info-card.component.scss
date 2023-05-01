@@ -1,0 +1,71 @@
+.card-section {
+    width: 400px;
+    border: 1px solid black;
+    padding: 8px;
+
+    .results-button {
+        width: 50%;
+        padding: 12px;
+        background-color: green;
+        color: white;
+        border: none;
+    }
+}
+
+.divider {
+    border-bottom: 1px solid black;
+    width: 100%;
+    margin: 12px 0;
+}
+
+.result-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .left-side {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-left: 12px;
+
+        span {
+            margin-top: 12px;
+            font-size: 14px;
+        }
+
+        .result-displayer {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 12px;
+
+            .no-results {
+                margin: 12px 0px;
+            }
+
+            .win {
+                background-color: green;
+                border-radius: 40px;
+                width: fit-content;
+                padding: 5px;
+            }
+
+            .lose {
+                background-color: red;
+                border-radius: 40px;
+                width: fit-content;
+                padding: 5px;
+            }
+        }
+    }
+
+    .right-side {
+        max-width: 50%;
+        max-height: 50%;
+
+        .image-fit {
+            max-width: 100%;
+        }
+    }
+}

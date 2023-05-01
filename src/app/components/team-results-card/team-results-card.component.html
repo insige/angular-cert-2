@@ -1,0 +1,26 @@
+<div class="card-section">
+    <app-title-section
+        [title]="team?.full_name"
+        [abbreviation]="team?.abbreviation"
+        [conference]="team?.conference"
+        [hasClose]="false"
+    ></app-title-section>
+    <div class="divider"></div>
+    <div class="result-section">
+        <span>Scores of past 12 days: </span>
+        <div class="result" *ngFor="let match of resultList">
+            <span class="abbreviation">{{ match.home_team.abbreviation}}</span>
+            <span>{{ match.home_team_score}}</span>
+            <span> - </span>
+            <span>{{ match.visitor_team_score}}</span>
+            <span class="abbreviation">{{ match.visitor_team.abbreviation}}</span>            
+        </div>
+    </div>
+    <button
+      id="backButton"
+      type="button"
+      [routerLink]="['']"
+    >
+      << Back to all team stats
+    </button>
+</div>

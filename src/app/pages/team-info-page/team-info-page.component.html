@@ -1,0 +1,20 @@
+<div *ngIf="isReady">
+  <form class="subheader-section">
+    <select type="dropdown" id="teamSelect" [formControl]="select">
+      <option *ngFor="let option of dropdownOptions" [value]="option.id">
+        {{ option.label }}
+      </option>
+    </select>
+    <button type="button" id="trackBtn" (click)="trackEvent()">Track team</button>
+  </form>
+  <div class="card-section">
+    <app-team-info-card
+      *ngFor="let team of teamList; let i = index"
+      [team]="team"
+      (closeCard)="closeCard(i)"
+    ></app-team-info-card>
+  </div>
+</div>
+<div *ngIf="!isReady">
+    <span>Loading ...</span>
+</div>

@@ -1,0 +1,27 @@
+.title-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .left-side-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        .title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+    }
+
+    .cross {
+        font-size: 18px;
+        font-weight: 400;
+        background-color: white;
+        border: none;
+        cursor: pointer;
+        align-self: flex-start;
+    }
+
+}
