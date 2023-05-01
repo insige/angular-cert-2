@@ -15,7 +15,7 @@ export class ApiService {
     this.calculateDates();
   }
 
-  calculateDates() {
+  calculateDates() : void {
     let today = new Date();
     let auxDate = structuredClone(today);
     for (let i = 0; i < 12; i++) {

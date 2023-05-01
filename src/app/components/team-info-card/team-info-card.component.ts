@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { Match, Team } from '../../modal/teams.modal';
+import { Match, Team, MatchResponse } from '../../modal/teams.modal';
 import { ApiService } from '../../services/api/api.service';
 import { SaveListService } from '../../services/save-list/save-list.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-team-info-card',
@@ -33,22 +34,25 @@ export class TeamInfoCardComponent implements OnInit {
     this.url = `https://interstate21.com/nba-logos/${this.team.abbreviation}.png`;
     this.idButton = 'results' + this.team.abbreviation;
     this.api.getLastResults(this.team.id).subscribe({
-      next: (value) => {
+      next: (value: MatchResponse) => {
         this.calculateLastScores(this.team.abbreviation, value.data);
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log(error);
       },
     });
   }
 
-  closeEvent() {
+  closeEvent(): void {
     this.closeCard.emit();
   }
 
-  navigateToPage() {
+  navigateToPage(): void {
     this.list.setScores(this.teamMatches);
     this.router.navigate(['/results', this.team.abbreviation]);
   }
 
-  calculateLastScores(abbreviation: string, data: Match[]) {
+  calculateLastScores(abbreviation: string, data: Match[]): void {
     this.teamMatches = data.filter(
       (match: Match) =>
         match.home_team.abbreviation === abbreviation ||
@@ -59,18 +63,20 @@ export class TeamInfoCardComponent implements OnInit {
       if (match.home_team.abbreviation === abbreviation) {
         this.sumScored += match.home_team_score;
         this.sumConceded += match.visitor_team_score;
-        this.ResultsList.push(
-          result ? 'W' : 'L'
-        )
+        this.ResultsList.push(result ? 'W' : 'L');
       } else {
         this.sumScored += match.visitor_team_score;
         this.sumConceded += match.home_team_score;
         this.ResultsList.push(result ? 'L' : 'W');
       }
     }
-    if(this.teamMatches.length > 0){
-      this.avgScored = (this.sumScored / this.teamMatches.length).toString();
-      this.avgConceded = (this.sumConceded / this.teamMatches.length).toString();
-    }    
+    if (this.teamMatches.length > 0) {
+      this.avgScored = (this.sumScored / this.teamMatches.length)
+        .toFixed(2)
+        .toString();
+      this.avgConceded = (this.sumConceded / this.teamMatches.length)
+        .toFixed(2)
+        .toString();
+    }
   }
 }

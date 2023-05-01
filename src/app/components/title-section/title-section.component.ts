@@ -19,7 +19,7 @@ export class TitleSectionComponent implements OnInit {
     this.idCross = 'remove' + this.abbreviation;
   }
 
-  closeEvent() : void{
+  closeEvent() : void {
     this.closeCard.emit();
   };
 }
