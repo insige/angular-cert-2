@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { DropdownTeamOption, Match, Team, TeamResponse } from 'src/app/modal/teams.modal';
-import { ApiService } from 'src/app/services/api/api.service';
-import { SaveListService } from 'src/app/services/save-list/save-list.service';
+import { DropdownTeamOption, Match, Team, TeamResponse } from '../../modal/teams.modal';
+import { ApiService } from '../../services/api/api.service';
+import { SaveListService } from '../../services/save-list/save-list.service';
 
 @Component({
   selector: 'app-team-info-page',

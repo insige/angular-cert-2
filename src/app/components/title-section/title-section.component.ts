@@ -21,6 +21,5 @@ export class TitleSectionComponent implements OnInit {
 
   closeEvent() : void{
     this.closeCard.emit();
-    console.log('close')
   };
 }

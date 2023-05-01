@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { Match, Team } from 'src/app/modal/teams.modal';
-import { ApiService } from 'src/app/services/api/api.service';
-import { SaveListService } from 'src/app/services/save-list/save-list.service';
+import { Match, Team } from '../../modal/teams.modal';
+import { ApiService } from '../../services/api/api.service';
+import { SaveListService } from '../../services/save-list/save-list.service';
 
 @Component({
   selector: 'app-team-info-card',
@@ -34,7 +34,6 @@ export class TeamInfoCardComponent implements OnInit {
     this.idButton = 'results' + this.team.abbreviation;
     this.api.getLastResults(this.team.id).subscribe({
       next: (value) => {
-        console.log(value);
         this.calculateLastScores(this.team.abbreviation, value.data);
       },
     });

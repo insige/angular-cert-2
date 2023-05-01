@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Team } from 'src/app/modal/teams.modal';
-import { SaveListService } from 'src/app/services/save-list/save-list.service';
+import { Team } from '../../modal/teams.modal';
+import { SaveListService } from '../../services/save-list/save-list.service';
 
 @Component({
   selector: 'app-team-results-page',

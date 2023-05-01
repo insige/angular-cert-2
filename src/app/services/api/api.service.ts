@@ -22,7 +22,6 @@ export class ApiService {
       auxDate.setDate(auxDate.getDate() - 1);
       this.dates.push(auxDate.toISOString().split('T')[0]);
     }
-    console.log(this.dates);
   }
 
   getTeamsRequest(page: number = 1): Observable<TeamResponse> {

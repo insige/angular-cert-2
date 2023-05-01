@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Match, Team } from 'src/app/modal/teams.modal';
-import { SaveListService } from 'src/app/services/save-list/save-list.service';
+import { Match, Team } from '../../modal/teams.modal';
+import { SaveListService } from '../../services/save-list/save-list.service';
 
 @Component({
   selector: 'app-team-results-card',

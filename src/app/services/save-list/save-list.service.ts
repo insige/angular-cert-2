@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Match, Team } from 'src/app/modal/teams.modal';
+import { Match, Team } from '../../modal/teams.modal';
 
 @Injectable({
   providedIn: 'root',
