@@ -9,7 +9,7 @@ import { MatchResponse, TeamResponse } from '../../modal/teams.modal';
 export class ApiService {
   readonly BASE_URL = 'https://free-nba.p.rapidapi.com';
 
-  dates: string[] = [];
+  dates: string = '';
 
   constructor(private http: HttpClient) {
     this.calculateDates();
@@ -20,7 +20,7 @@ export class ApiService {
     let auxDate = structuredClone(today);
     for (let i = 0; i < 12; i++) {
       auxDate.setDate(auxDate.getDate() - 1);
-      this.dates.push(auxDate.toISOString().split('T')[0]);
+      this.dates += '&dates[]=' + auxDate.toISOString().split('T')[0];
     }
   }
 
@@ -37,18 +37,16 @@ export class ApiService {
   }
 
   getLastResults(id: number = 0): Observable<MatchResponse> {
-    return this.http.get<MatchResponse>(this.BASE_URL + '/games', {
-      headers: {
-        'X-RapidAPI-Key': '2QMXSehDLSmshDmRQcKUIAiQjIZAp1UvKUrjsnewgqSP6F5oBX',
-        'X-RapidAPI-Host': 'free-nba.p.rapidapi.com',
-      },
-      params: {
-        page: 0,
-        dates: this.dates,
-        per_page: 12,
-        team_ids: [id],
-      },
-    });
+    return this.http.get<MatchResponse>(
+      this.BASE_URL + `/games?page=0${this.dates}&per_page=12&team_ids[]=${id}`,
+      {
+        headers: {
+          'X-RapidAPI-Key':
+            '2QMXSehDLSmshDmRQcKUIAiQjIZAp1UvKUrjsnewgqSP6F5oBX',
+          'X-RapidAPI-Host': 'free-nba.p.rapidapi.com',
+        },
+      }
+    );
   }
 
 }
