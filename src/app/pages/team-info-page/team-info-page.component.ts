@@ -67,7 +67,10 @@ export class TeamInfoPageComponent implements OnInit, OnDestroy {
     const team = this.teamData.find(
       (team: Team) => team.abbreviation === this.select.value
     );
-    if (team) {
+    const repeated = this.teamList.find(
+      (team: Team) => team.abbreviation === this.select.value
+    );
+    if (team && repeated === undefined) {
       this.teamList.push(team);
     }
   }
